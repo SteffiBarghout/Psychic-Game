@@ -25,6 +25,10 @@
             String.fromCharCode(
                 Math.round(math.random() * 26) + 97
             );
+        // User's guess, captured keystrokes.
+        document.onkeydown = function(event) {
+            var keyPress = (String.fromCharCode(event.keyCode)).toUpperCase();
+        }
     </script>
     <p>Wins: <span id="numWins"></span></p>
     <p>Losses: <span id="numLosses"></span></p>
