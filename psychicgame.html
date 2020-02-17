@@ -12,6 +12,7 @@
 <img src="assets/images/Psychic Image.jpeg" alt="Psychicorbhands">
 
 <body>
+    <!-- HTML Title on the Page -->
     <p>Guess what letter the computer is thinking of!</p>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
         // jquery variables.
@@ -30,10 +31,11 @@
             var keyPress = (String.fromCharCode(event.keyCode)).toUpperCase();
         }
     </script>
+    <!-- HTML display of the Wins, Losses, Guesses Left, Letters Guessed and the corresponding outputs -->
     <p>Wins: <span id="numWins"></span></p>
     <p>Losses: <span id="numLosses"></span></p>
     <p>Guesses left: <span id="numGuesses"></span></p>
-    <p>Your letters guessed so far: <span id="playersGuess"></span></p>
+    <p>Letters you have guessed: <span id="playersGuess"></span></p>
 </body>
 
 </html>
