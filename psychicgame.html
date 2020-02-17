@@ -21,78 +21,80 @@
     <p class="text-center">Guesses left: </p>
     <p class="text-center">Letters you have guessed: </p>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-        // JQuery variables.
-        var wins = 0;
-        var losses = 0;
-        var guessesLeft = 5;
-        var lettersGuessed = [];
+        $(document).ready(function() {
+            // JQuery variables.
+            var wins = 0;
+            var losses = 0;
+            var guessesLeft = 5;
+            var lettersGuessed = [];
 
-        // Altered math.random for computer generated letters.
-        var computerGuess =
-            String.fromCharCode(Math.round(math.random() * 26) + 97);
-        // User's guess, captured keystrokes.
-        document.onkeydown = function(event) {
-            var keyPress = (String.fromCharCode(event.keyCode)).toUpperCase();
-            addLetter(keyPress);
-        }
-
-        function addLetter(usersKeypress) {
-            var repeatGuess = lettersGuessed.some(function(item) {
-                return item === usersKeypress;
-            })
-            if (repeatGuess) {
-                alert("You already guessed " + usersKeypress + " try again!");
-            } else {
-                lettersGuessed.push(usersKeypress);
-                showLettersGuessed();
-                guessMatch(usersKeypress);
+            // Altered math.random for computer generated letters.
+            var computerGuess =
+                String.fromCharCode(Math.round(math.random() * 26) + 97);
+            // User's guess, captured keystrokes.
+            document.onkeydown = function(event) {
+                var keyPress = (String.fromCharCode(event.keyCode)).toUpperCase();
+                addLetter(keyPress);
             }
-        }
 
-        function showLettersGuessed() {
-            var tempStr = lettersGuessed.join(", ");
-            document.getElementById("playersGuess");
-        }
+            function addLetter(usersKeypress) {
+                var repeatGuess = lettersGuessed.some(function(item) {
+                    return item === usersKeypress;
+                })
+                if (repeatGuess) {
+                    alert("You already guessed " + usersKeypress + " try again!");
+                } else {
+                    lettersGuessed.push(usersKeypress);
+                    showLettersGuessed();
+                    guessMatch(usersKeypress);
+                }
+            }
 
-        function guessMatch(character) {
-            if (character === computerGuess) {
-                alert("You Won!");
-                wins = wins + 1;
-                showWins();
-                resetVariables();
-            } else if (guessesLeft === 0) {
-                alert("Lost this time, start over and try again!");
-                lossses = losses + 1;
-                showLosses();
-                resetVariables();
-            } else {
-                guessesLeft = guessesLeft - 1;
+            function showLettersGuessed() {
+                var tempStr = lettersGuessed.join(", ");
+                document.getElementById("playersGuess");
+            }
+
+            function guessMatch(character) {
+                if (character === computerGuess) {
+                    alert("You Won!");
+                    wins = wins + 1;
+                    showWins();
+                    resetVariables();
+                } else if (guessesLeft === 0) {
+                    alert("Lost this time, start over and try again!");
+                    lossses = losses + 1;
+                    showLosses();
+                    resetVariables();
+                } else {
+                    guessesLeft = guessesLeft - 1;
+                    showGuessesRemaining();
+                }
+            }
+
+            function showWins() {
+                document.getElementById("numWins");
+            }
+
+            function showLosses() {
+                document.getElementById("numLosses");
+            }
+
+            function showGuessesRemaining() {
+                document.getElementById("numGuesses");
+            }
+
+            function resetVariables() {
+                lettersGuessed = [];
+                guessesLeft = 5;
+            }
+
+            function startGame() {
                 showGuessesRemaining();
+                showWins();
+                showLosses();
             }
-        }
-
-        function showWins() {
-            document.getElementById("numWins");
-        }
-
-        function showLosses() {
-            document.getElementById("numLosses");
-        }
-
-        function showGuessesRemaining() {
-            document.getElementById("numGuesses");
-        }
-
-        function resetVariables() {
-            lettersGuessed = [];
-            guessesLeft = 5;
-        }
-
-        function startGame() {
-            showGuessesRemaining();
-            showWins();
-            showLosses();
-        }
+        });
     </script>
 
 </body>
