@@ -8,14 +8,20 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 </head>
+<!-- Title of the Game header -->
 <h1>The Psychic Game</h1>
 <img src="assets/images/Psychic Image.jpeg" alt="Psychicorbhands">
 
 <body>
-    <!-- HTML Title on the Page -->
+    <!-- HTML Title before other paragraphs -->
     <p>Guess what letter the computer is thinking of!</p>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
-        // jquery variables.
+    <!-- HTML display of the Wins, Losses, Guesses Left, Letters Guessed and the corresponding outputs -->
+    <p>Wins: </p>
+    <p>Losses: </p>
+    <p>Guesses left: </p>
+    <p>Letters you have guessed: </p>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js">
+        // JQuery variables.
         var wins = 0;
         var losses = 0;
         var guessesLeft = 5;
@@ -23,19 +29,72 @@
 
         // Altered math.random for computer generated letters.
         var computerGuess =
-            String.fromCharCode(
-                Math.round(math.random() * 26) + 97
-            );
+            String.fromCharCode(Math.round(math.random() * 26) + 97);
         // User's guess, captured keystrokes.
         document.onkeydown = function(event) {
             var keyPress = (String.fromCharCode(event.keyCode)).toUpperCase();
+            addLetter(keyPress);
+        }
+
+        function addLetter(usersKeypress) {
+            var repeatGuess = lettersGuessed.some(function(item) {
+                return item === usersKeypress;
+            })
+            if (repeatGuess) {
+                alert("You already guessed " + usersKeypress + " try again!");
+            } else {
+                lettersGuessed.push(usersKeypress);
+                showLettersGuessed();
+                guessMatch(usersKeypress);
+            }
+        }
+
+        function showLettersGuessed() {
+            var tempStr = lettersGuessed.join(", ");
+            document.getElementById("playersGuess");
+        }
+
+        function guessMatch(character) {
+            if (character === computerGuess) {
+                alert("You Won!");
+                wins = wins + 1;
+                showWins();
+                resetVariables();
+            } else if (guessesLeft === 0) {
+                alert("Lost this time, start over and try again!");
+                lossses = losses + 1;
+                showLosses();
+                resetVariables();
+            } else {
+                guessesLeft = guessesLeft - 1;
+                showGuessesRemaining();
+            }
+        }
+
+        function showWins() {
+            document.getElementById("numWins");
+        }
+
+        function showLosses() {
+            document.getElementById("numLosses");
+        }
+
+        function showGuessesRemaining() {
+            document.getElementById("numGuesses");
+        }
+
+        function resetVariables() {
+            lettersGuessed = [];
+            guessesLeft = 5;
+        }
+
+        function startGame() {
+            showGuessesRemaining();
+            showWins();
+            showLosses();
         }
     </script>
-    <!-- HTML display of the Wins, Losses, Guesses Left, Letters Guessed and the corresponding outputs -->
-    <p>Wins: <span id="numWins"></span></p>
-    <p>Losses: <span id="numLosses"></span></p>
-    <p>Guesses left: <span id="numGuesses"></span></p>
-    <p>Letters you have guessed: <span id="playersGuess"></span></p>
+
 </body>
 
 </html>
