@@ -4,25 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Psychic Game</title>
+    <!-- Css Stylesheet in Assets folder-->
     <link rel="stylesheet" type="text/css" href="assets/style.css">
+    <!-- Font Awesome link -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- Bootstrap Link -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrap.cdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
 </head>
-<!-- Title of the Game header -->
-<h1 class="text-center">The Psychic Game</h1>
-<img src="assets/images/Psychic Image.jpeg" alt="Psychic" class="center">
 
 <body>
+    <!-- Overall Bootstrap Grid -->
+    <div class="container">
+
+        <!-- Jumbotron with Title and Image -->
+        <div class="jumbotron">
+            <h1 class="text-center">
+                <strong>The Psychic Game</strong>
+                <img src="assets/images/Psychic Image.jpeg" alt="Psychic" class="center">
+            </h1>
+        </div>
+    </div>
     <!-- HTML Title before other paragraphs -->
     <p class="text-center">Guess what letter the computer is thinking to replenish your endorphins!</p>
     <!-- HTML display of the Wins, Losses, Guesses Left, Letters Guessed and the corresponding outputs -->
-    <i class="fab fa-angellist"></i>
     <p class="text-center"> Wins: <span id="numWins"></span> </p>
     <p class="text-center">Losses: <span id="numLosses"></span></p>
     <p class="text-center">Guesses left: <span id="numGuesses"></span> </p>
     <p class="text-center">Letters you have guessed: <span id="playersGuess"></span></p>
-
+    <!-- JQuery Link -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <script type="text/javascript">
