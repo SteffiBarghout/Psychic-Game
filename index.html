@@ -4,13 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Psychic Game</title>
-    <!-- Css Stylesheet in Assets folder-->
-    <link rel="stylesheet" type="text/css" href="assets/style.css">
     <!-- Font Awesome link -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Bootstrap Link -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrap.cdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Css Stylesheet in Assets folder-->
+    <link rel="stylesheet" type="text/css" href="assets/style.css">
 </head>
 
 <body>
@@ -42,13 +41,15 @@
             var losses = 0;
             var guessesLeft = 10;
             var lettersGuessed = [];
-
+            var computerGuess;
             // Altered math.random for computer generated letters.
-            var computerGuess =
-                String.fromCharCode(
-                    Math.round(Math.random() * 26) + 97
-                );
-            console.log(computerGuess);
+            function randomletterGenerator() {
+                computerGuess =
+                    String.fromCharCode(
+                        Math.round(Math.random() * 26) + 97
+                    );
+                console.log(computerGuess);
+            }
             // User's guess, captured keystrokes.
             document.onkeydown = function(event) {
                 var keyPress = (String.fromCharCode(event.keyCode)).toLowerCase();
@@ -79,6 +80,7 @@
                     wins = wins + 1;
                     showWins();
                     resetVariables();
+                    randomletterGenerator();
                 } else if (guessesLeft === 0) {
                     alert("Lost this time, start over and try again!");
                     losses = losses + 1;
@@ -108,9 +110,11 @@
             }
 
             function startGame() {
+                randomletterGenerator();
                 showGuessesRemaining();
                 showWins();
                 showLosses();
+
             }
 
             startGame();
