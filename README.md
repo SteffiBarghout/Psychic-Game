@@ -18,6 +18,6 @@ You can use this code yourself by first copying the code and using git clone in 
 
 
  * Here is what my Psychic game looks like and if you click the picture you can go straight to looking through the portfolio!
-<a href="steffisbootcampdrive.github.io/psychic-game/" target="_blank">
+<a href="https://steffisbootcampdrive.github.io/Psychic-Game/" target="_blank">
     <img src="assets/images/PsychicGame.png" alt="PsychicGame">
 </a>
