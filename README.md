@@ -1,5 +1,5 @@
 # Psychic-Game
-## by Steffi Wellington
+## by Steffi Barghout
 1. Guess the letter the computer has chosen. 
 2. You have 5 chances to guess the correct letter. 
 3. After you have either guessed the correct answer or have reached 5 guesses then you will have either an increase display in the wins or losses. 
@@ -18,6 +18,6 @@ You can use this code yourself by first copying the code and using git clone in 
 
 
  * Here is what my Psychic game looks like and if you click the picture you can go straight to looking through the portfolio!
-<a href="https://steffisbootcampdrive.github.io/Psychic-Game/" target="_blank">
+<a href="https://steffibarghout.github.io/Psychic-Game/" target="_blank">
     <img src="assets/images/PsychicGame.png" alt="PsychicGame">
 </a>
